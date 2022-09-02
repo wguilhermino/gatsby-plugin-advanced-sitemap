@@ -59,9 +59,7 @@
             <body>
                 <div id="content">
                     <h1>XML Sitemap</h1>
-                    <p class="desc">
-                        &nbsp;
-                    </p>
+                    <p class="desc"></p>
                     <xsl:if test="count(sitemap:sitemapindex/sitemap:sitemap) &gt; 0">
                         <table id="sitemap" cellpadding="3">
                             <thead>
