@@ -102,6 +102,12 @@ export default class BaseSiteMapGenerator {
 
         imgNode = this.createImageNodeFromDatum(datum);
 
+        if(datum.priority)
+            node.url.push({priority: datum.priority});
+        
+        if(datum.changefreq)
+            node.url.push({changefreq: datum.changefreq});
+
         if (imgNode) {
             node.url.push(imgNode);
         }
