@@ -2,6 +2,7 @@
 // with the "real" used ones.
 const getNodePath = (node, allSitePage) => {
     if (!node.path || node.path === "/" || node.ignorePathCheck) {
+        delete node.ignorePathCheck;
         return node;
     }
 
