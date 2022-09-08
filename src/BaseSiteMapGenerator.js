@@ -126,7 +126,7 @@ export default class BaseSiteMapGenerator {
 
     createImageNodeFromDatum(datum, directSource) {
         // Check for cover first because user has cover but the rest only have image
-        const image = directSource? directSource : datum.cover_image || datum.profile_image || datum.feature_image;
+        const image = directSource? datum : datum.cover_image || datum.profile_image || datum.feature_image;
 
         let imageEl;
 
