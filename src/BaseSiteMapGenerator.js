@@ -100,25 +100,33 @@ export default class BaseSiteMapGenerator {
             ],
         };
 
-        imgNode = this.createImageNodeFromDatum(datum);
-
         if(datum.priority)
             node.url.push({priority: datum.priority});
         
         if(datum.changefreq)
             node.url.push({changefreq: datum.changefreq});
 
+        imgNode = this.createImageNodeFromDatum(datum);
+
         if (imgNode) {
             node.url.push(imgNode);
+        }
+
+        if(datum.images){
+            datum.images.forEach((img) => {
+              imgNode = this.createImageNodeFromDatum(img, true);
+              if(imgNode)
+                node.url.push(imgNode);
+            });
         }
 
         return node;
     }
 
-    createImageNodeFromDatum(datum) {
+    createImageNodeFromDatum(datum, directSource) {
         // Check for cover first because user has cover but the rest only have image
-        const image =
-            datum.cover_image || datum.profile_image || datum.feature_image;
+        const image = directSource? directSource : datum.cover_image || datum.profile_image || datum.feature_image;
+
         let imageEl;
 
         if (!image) {
