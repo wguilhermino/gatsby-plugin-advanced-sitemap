@@ -10,6 +10,7 @@ const XMLNS_DECLS = {
     _attr: {
         xmlns: `http://www.sitemaps.org/schemas/sitemap/0.9`,
         'xmlns:image': `http://www.google.com/schemas/sitemap-image/1.1`,
+        'xmlns:news': `http://www.google.com/schemas/sitemap-news/0.9`
     },
 };
 
