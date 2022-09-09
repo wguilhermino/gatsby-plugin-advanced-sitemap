@@ -121,8 +121,24 @@ export default class BaseSiteMapGenerator {
             });
         }
 
+        if(datum.news){
+            node.url.push(getNewsNode(datum));
+          }
+
         return node;
     }
+
+    getNewsNode(datum) {
+        var newsEl = [
+          {"news:publication": [{ "news:name": datum.news.publication }, { "news:language": datum.news.language }]},
+          {"news:publication_date": new Date(datum.dateGmt).toISOString() },
+          {"news:title": datum.title}
+        ];
+    
+        return {
+          "news:news": newsEl
+        }
+      }
 
     createImageNodeFromDatum(datum, directSource) {
         // Check for cover first because user has cover but the rest only have image
